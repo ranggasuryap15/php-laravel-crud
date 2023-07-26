@@ -18,6 +18,11 @@ class UserController extends Controller
         return view('user.create');
     }
 
+    public function show()
+    {
+        
+    }
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -48,8 +53,11 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
-    public function delete()
+    public function destroy($id)
     {
+        $user = User::findOrFail($id);
+        $user->delete();
 
+        return redirect()->route('user.index');
     }
 }

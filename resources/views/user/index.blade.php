@@ -33,7 +33,12 @@
                     <td>{{ $user->email}}</td>
                     <td>
                         <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning">Edit</a>
-                        <a href="{{ route('user.destroy', $user->id) }}" class="btn btn-danger">Hapus</a>
+                        <form action="{{ route('user.destroy', $user->id) }}" method="POST">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="submit" value="DELETE" class="btn btn-danger">
+                        </form>
+                        {{-- <a href="{{ route('user.destroy', $user->id) }}" class="btn btn-danger">Hapus</a> --}}
                     </td>
                 </tr>
                 @endforeach
