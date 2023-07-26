@@ -31,7 +31,10 @@
                 <tr>
                     <td>{{ $user->name}}</td>
                     <td>{{ $user->email}}</td>
-                    {{-- <td><label class="badge badge-danger">Pending</label></td> --}}
+                    <td>
+                        <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning">Edit</a>
+                        <a href="{{ route('user.destroy', $user->id) }}" class="btn btn-danger">Hapus</a>
+                    </td>
                 </tr>
                 @endforeach
 
@@ -46,5 +49,5 @@
     </div>
 </div>
 
-<a href="{{ route('user.create') }}" class="btn btn-success mt-2">Tambah</a>
+<a href="{{ route('user.create') }}" class="btn btn-success mt-2 ">Tambah</a>
 @endsection

@@ -29,6 +29,25 @@ class UserController extends Controller
         return redirect()->route('user.index');
     }
 
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        return view('user.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        return redirect()->route('user.index');
+    }
+
     public function delete()
     {
 
