@@ -30,7 +30,12 @@ class UserController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-        User::create($request->all());
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'remember_token' => $request->remember_token,
+        ]);
         return redirect()->route('user.index');
     }
 
@@ -49,7 +54,11 @@ class UserController extends Controller
         ]);
         
         $user = User::findOrFail($id);
-        $user->update($request->all());
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
         return redirect()->route('user.index');
     }
 
