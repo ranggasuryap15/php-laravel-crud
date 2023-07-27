@@ -13,8 +13,9 @@
     <title>Laravel CRUD | @yield('title')</title>
 </head>
 <body>
-    @yield('content')
-
+    <div class="container">
+        @yield('content')                                                
+    </div>
     <script src="{{ asset('js/bootstrap.css') }}"></script>
 </body>
 </html>
